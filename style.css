@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    background-color: rgb(10, 10, 10);
+}
+.navbar{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 20px;
+    column-gap:10px;
+    justify-content: space-between;
+}
+.nav-item{
+    color: white;
+    font-family: monospace;
+    font-size:25px;
+}
+.nav-item-container{
+    display: flex;
+    column-gap: 15px;
+}
+.name{
+    display: flex;
+    color: white;
+    font-family: monospace;
+    justify-content: center;
+    border: 20px;
+}
+.final{
+    display: flex;
+    color: white;
+    font-family: monospace;
+}
+.button{
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    justify-content: center;
+    width: 30px;
+    height: 20px;
+}
