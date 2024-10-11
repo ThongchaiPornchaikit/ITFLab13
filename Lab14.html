@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <a href = "https://th-th.facebook.com/login/?next=https%3A%2F%2Fth-th.facebook.com%2F">
+        <h1 id = "username">He Hello</h1>
+    </a>
+    <div class = "profile" id = "profile">
+        <div class = "notify">
+            <p>1</p>
+        </div>
+    </div>
+    <div class = "fieldName">
+        <label> Set username </label><input id = "input-name" type="text"><button onclick = "setName()">set</button>
+    </div>
+    <div class = "fieldProfile">
+        <label> Set profile </label><input id = "input-url" type="text"><button onclick = "setImg()">set</button>
+    </div>
+
+    <div class = "fieldPhone">
+        <div>
+        <input id = "nameinput" type = "text">
+        <input id = "phoneinput" type = "text">
+        <button class = button1 onclick = "addRow()">add</button>
+        <button class = button1 onclick = "saveCSV()">export</button>
+        </div>
+    </div>
+    <table id = "table">
+        <tr>
+            <th>Name</th>
+            <th>Phone</td>
+        </tr>
+    </table>
+    <script>
+        const name = document.getElementById("username")
+        const inputName = document.getElementById("input-name")
+        const profile = document.getElementById("profile")
+        const inputUrl = document.getElementById("input-url")
+        const table = document.getElementById("table")
+        const nameInput = document.getElementById("nameinput")
+        const phoneInput = document.getElementById("phoneinput")
+        const phonenumber = []
+    
+        function setName(){
+            name.textContent = inputName.value;
+            input.value = "";
+        }
+        function setImg(){
+            profile.style.backgroundImage = "url("+ inputUrl.value+ ")";
+        }
+
+        function addRow(){
+            const row = document.createElement("tr");
+            const cell1= document.createElement("td");
+            const cell2 = document.createElement("td");
+            cell1.textContent = nameInput.value;
+            cell2.textContent = phoneInput.value;
+            row.appendChild(cell1);
+            row.appendChild(cell2);
+            table.appendChild(row);
+            phonenumber.push([nameInput.value,phoneInput.value]);
+        }
+        function saveCSV(){
+            const csvContent = phonenumber.map(row => row.join(",")).join("\n"); // Convert array to CSV string
+                const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+                const link = document.createElement("a");
+                const url = URL.createObjectURL(blob);
+                link.setAttribute("href", url);
+                link.setAttribute("download", "data.csv");
+                link.style.visibility = "hidden";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+        };
+    </script>
+</body>
+</html>
